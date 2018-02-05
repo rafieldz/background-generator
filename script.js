@@ -1,28 +1,14 @@
-const first = () => {
-	const greet = 'Hi';
-	const second = () => {
-		alert(greet);
-	}
-	return second;
+var css = document.querySelector("h3");
+var color1 = document.querySelector(".color1");
+var color2 = document.querySelector(".color2");
+var body = document.getElementById("gradient");
+
+function setGradient () {
+	// body... 
+	body.style.background = "linear-gradient(to right, " + 
+	color1.value + 
+	", " + color2.value + ")";
 }
 
-const newFunc = first();
-newFunc();
-
-// Closures - a function ran. the function executed. It's never going to executed again
-// But it's going remember that there are references to those variables 
-// so the child scope always has access to the parent scope.
-
-//Currying
-const multiply = (a,b) => a * b;
-const curriedMultiply = (a) => (b) => a * b;
-const multiplyBy5 = curriedMultiply(5);
-
-//Compose
-const compose = (f,g) => (a) => f(g(a));
-
-const sum = (num) => num + 1;
-
-compose(sum, sum)(5);
-
-// Avoiding Side Effects, functional purity.
+color1.addEventListener("input", setGradient);
+color2.addEventListener("input", setGradient);
